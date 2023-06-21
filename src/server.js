@@ -1,13 +1,13 @@
 import express from "express";
 import path from "path";
 import configViewEngine from "./configs/viewEngine";
-const port = 3000;
+import initWebRoutes from "./route/web";
+require("dotenv").config();
+const port = process.env.PORT || 3000;
+
 const app = express();
 configViewEngine(app);
-
-app.get("/", (req, res) => {
-  res.render("index.ejs");
-});
+initWebRoutes(app);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
