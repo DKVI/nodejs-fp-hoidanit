@@ -14,10 +14,11 @@ let getDetailUserPage = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const { firstName, lastName, address } = req.body;
+  const { firstName, lastName, email, address } = req.body;
+  console.log(req.body);
   await pool.execute(
-    "INSERT INTO `users`(`firstName`, `lastName`, `address`) VALUES (?, ?, ?)",
-    [firstName, lastName, address]
+    "INSERT INTO `users`(`firstName`, `lastName`,`email` , `address`) VALUES (?, ? ,?, ?)",
+    [firstName, lastName, email, address]
   );
   return res.redirect("/");
 };
@@ -36,10 +37,10 @@ const editUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { firstName, lastName, address } = req.body;
+  const { firstName, lastName, email, address } = req.body;
   await pool.execute(
-    "UPDATE `users` SET `firstName`=?,`lastName`=?,`address`=? WHERE id = ?",
-    [firstName, lastName, address, req.params.id]
+    "UPDATE `users` SET `firstName`=?,`lastName`=?, `email`=?,`address`=? WHERE id = ?",
+    [firstName, lastName, email, address, req.params.id]
   );
   return res.redirect("/");
 };
