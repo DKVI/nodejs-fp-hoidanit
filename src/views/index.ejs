@@ -75,24 +75,31 @@
                 "
                 >Details</a
               >
-              <a
-                href="/detail/user/<%= users[i].id %>"
-                style="
-                  padding: 2px 10px;
-                  text-decoration: none;
-                  border: 1px solid black;
-                "
-                >Edit</a
-              >
-              <a
-                href="/detail/user/<%= users[i].id %>"
-                style="
-                  padding: 2px 10px;
-                  text-decoration: none;
-                  border: 1px solid black;
-                "
-                >Delete</a
-              >
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <form action="/edit-user/<%= users[i].id %>" method="get">
+                <button
+                  style="
+                    padding: 2px 10px;
+                    text-decoration: none;
+                    border: 1px solid black;
+                  "
+                  type="submit"
+                >
+                  Edit
+                </button>
+              </form>
+              <form action="/delete-user/<%= users[i].id %>" method="post">
+                <button
+                  type="submit"
+                  style="
+                    padding: 2px 10px;
+                    text-decoration: none;
+                    border: 1px solid black;
+                  "
+                >
+                  Delete
+                </button>
+              </form>
             </td>
           </tr>
           <% } %>
@@ -126,6 +133,12 @@
                   name="lastName"
                 />
               </div>
+              <div class="email">
+                <label>
+                  <b>Email</b>
+                </label>
+                <input type="text" placeholder="Enter Email" name="email" />
+              </div>
               <div class="address">
                 <label>
                   <b>Address</b>
@@ -134,7 +147,7 @@
               </div>
               <div style="width: 100%; display: flex">
                 <div class="submit">
-                  <button type="submit">Create</button>
+                  <button type="submit">Submit</button>
                 </div>
                 <div class="clear">
                   <button>Clear</button>
