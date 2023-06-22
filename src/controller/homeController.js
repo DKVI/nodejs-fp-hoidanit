@@ -13,4 +13,13 @@ let getDetailUserPage = async (req, res) => {
   return res.send(JSON.stringify(rows));
 };
 
-export { getHomePage, getDetailUserPage };
+const createUser = async (req, res) => {
+  const { firstName, lastName, address } = req.body;
+  await pool.execute(
+    "INSERT INTO `users`(`firstName`, `lastName`, `address`) VALUES (?, ?, ?)",
+    [firstName, lastName, address]
+  );
+  return res.send("call post users");
+};
+
+export { getHomePage, getDetailUserPage, createUser };

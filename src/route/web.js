@@ -1,5 +1,9 @@
 import express from "express";
-import { getHomePage, getDetailUserPage } from "../controller/homeController";
+import {
+  getHomePage,
+  getDetailUserPage,
+  createUser
+} from "../controller/homeController";
 let router = express.Router();
 
 const initWebRoutes = (app) => {
@@ -8,6 +12,7 @@ const initWebRoutes = (app) => {
   router.get("/about", (req, res) => {
     res.send("About page");
   });
+  router.post("/create-new-user", createUser);
   return app.use("/", router);
 };
 
