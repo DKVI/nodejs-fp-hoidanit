@@ -4,7 +4,7 @@ import initWebRoutes from "./route/web";
 import initAPI from "./route/api";
 require("dotenv").config();
 const port = process.env.PORT || 3000;
-const app = express();
+ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
